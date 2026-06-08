@@ -49,7 +49,7 @@ void OrdenarAscendenteEdadTrabajador(){
     cout<<"lista ordenada por edad: "<<endl;
     for(int i=0; i<4; i++){
         for(int j=0; j<4; j++){
-            if(arraytrabajadores[i].edad < arraytrabajadores[j].edad){
+            if(arraytrabajadores[i].edad > arraytrabajadores[j].edad){
                 arraytemp[i].nombre = arraytrabajadores[j].nombre;
                 arraytemp[i].cedula = arraytrabajadores[j].cedula;
                 arraytemp[i].edad = arraytrabajadores[j].edad;
@@ -66,18 +66,44 @@ void OrdenarAscendenteEdadTrabajador(){
                 arraytrabajadores[i].ocupacion = arraytemp[i].ocupacion;
 
 
-}
+
 
         }
     }
 }
+    mostrarTrabajadores();
+    cout<<endl;
+}
 
+
+
+//funcion para ver si la cedula es valida   
+
+bool buscartrabajador(string ced){
+    cout<<"buscando trabajador con cedula: "<<ced<<endl;
+bool esta =false;
+for(int i=0; i<4; i++){
+    if(arraytrabajadores[i].cedula == ced){
+        esta = true;
+        break;
+    }
+return esta;
+}
 
 
 int main(){
     GuardarTrabajador();
     mostrarTrabajadores();
     OrdenarAscendenteEdadTrabajador();
+    cout<<"ingrese la cedula del trabajador a buscar: ";
+    cin>> ced;
+    if(buscartrabajador(ced)==true){
+        cout<<"el trabajador esta registrado"<<endl;
+    else{
+        cout<<"el trabajador no esta registrado"<<endl;
+    }
     return 0;
+}
+
 }
 
